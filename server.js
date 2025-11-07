@@ -21,12 +21,12 @@ const findProductById = (id) => {
 app.get('/', (req, res) => {
     try {
         res.render('index', {
-            title: 'Вязаные вещи - Главная',
+            title: 'Text header',
             products: products
         });
     } catch (error) {
         console.error('Ошибка при рендеринге главной страницы:', error);
-        res.status(500).send('Ошибка сервера');
+        res.status(500).send('Server Error');
     }
 });
 
@@ -36,7 +36,7 @@ app.get('/api/products', (req, res) => {
         res.json(products);
     } catch (error) {
         console.error('Ошибка при получении товаров:', error);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({ error: 'Server Error' });
     }
 });
 
@@ -51,7 +51,7 @@ app.get('/api/products/:id', (req, res) => {
         }
     } catch (error) {
         console.error('Ошибка при получении товара:', error);
-        res.status(500).json({ error: 'Ошибка сервера' });
+        res.status(500).json({ error: 'Server Error' });
     }
 });
 
@@ -68,7 +68,7 @@ app.get('/buy/:productId', (req, res) => {
         }
     } catch (error) {
         console.error('Ошибка при переадресации:', error);
-        res.status(500).send('Ошибка сервера');
+        res.status(500).send('Server Error');
     }
 });
 
@@ -80,7 +80,7 @@ app.use((req, res) => {
 // Обработка ошибок
 app.use((err, req, res, next) => {
     console.error('Необработанная ошибка:', err);
-    res.status(500).send('Внутренняя ошибка сервера');
+    res.status(500).send('Private Server Error');
 });
 
 // Запуск сервера
