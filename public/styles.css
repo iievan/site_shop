@@ -290,6 +290,61 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-catalog {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+    margin-top: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.btn-catalog:hover {
+    background-color: #9ba8b3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.catalog-link-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.pagination-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid var(--primary-color);
+}
+
+.pagination-btn:hover {
+    background-color: #9ba8b3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.pagination-info {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
 /* Sections */
 section {
     padding: 80px 20px;
@@ -433,6 +488,51 @@ section h2 {
     padding: 2rem 20px;
 }
 
+/* Splash Screen */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#splash-screen.show {
+    opacity: 1;
+}
+
+.splash-content {
+    text-align: center;
+    animation: splashFadeIn 0.5s ease-out;
+}
+
+.splash-content h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@keyframes splashFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-menu {
@@ -475,5 +575,10 @@ section h2 {
 
     section {
         padding: 60px 20px;
+    }
+
+    /* Responsive для splash screen */
+    .splash-content h1 {
+        font-size: 1.8rem;
     }
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Text title">
+    <meta name="keywords" content="Text title">
+    <title><%= title %></title>
+
+    <!-- Preconnect для оптимизации загрузки шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Загрузка шрифтов с display=swap для оптимизации -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Text Title</div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Главная страница</a></li>
+                <li><a href="#products" class="nav-link active">Каталог</a></li>
+                <li><a href="/#about" class="nav-link">Обо мне</a></li>
+                <li><a href="/#contact" class="nav-link">Связь</a></li>
+            </ul>
+            <div class="cart-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-count">0 P</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Секция Товары / Каталог -->
+        <section id="products" class="products">
+            <div class="container">
+                <h2 class="section-title">Каталог товаров</h2>
+                <div class="products-grid" id="productsGrid">
+                    <% products.forEach(product => { %>
+                        <%- include('partials/product-card', {product: product}) %>
+                    <% }); %>
+                </div>
+
+                <!--
+                    Элементы пагинации
+                    Показываются только если товаров больше чем помещается на одной странице
+                    Обеспечивают навигацию между страницами каталога
+                -->
+                <% if (totalPages > 1) { %>
+                <div class="pagination">
+                    <!-- Кнопка предыдущей страницы -->
+                    <% if (hasPrevPage) { %>
+                        <a href="/catalog?page=<%= prevPage %>" class="pagination-btn">
+                            ‹ Предыдущая
+                        </a>
+                    <% } %>
+
+                    <!-- Информация о текущей странице -->
+                    <span class="pagination-info">
+                        Страница <%= currentPage %> из <%= totalPages %>
+                    </span>
+
+                    <!-- Кнопка следующей страницы -->
+                    <% if (hasNextPage) { %>
+                        <a href="/catalog?page=<%= nextPage %>" class="pagination-btn">
+                            Следующая ›
+                        </a>
+                    <% } %>
+                </div>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Text title</p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -89,18 +89,11 @@
                 <h2 class="section-title">Text title</h2>
                 <div class="products-grid" id="productsGrid">
                     <% products.forEach(product => { %>
-                        <div class="product-card">
-                            <div class="product-image"><%= product.image %></div>
-                            <div class="product-info">
-                                <h3 class="product-title"><%= product.name %></h3>
-                                <p class="product-description"><%= product.description %></p>
-                                <div class="product-price"><%= product.price %></div>
-                                <a href="/buy/<%= product.id %>" class="btn btn-buy" target="_blank">
-                                    Text title
-                                </a>
-                            </div>
-                        </div>
+                        <%- include('partials/product-card', {product: product}) %>
                     <% }); %>
+                </div>
+                <div class="catalog-link-container">
+                    <a href="/catalog" class="btn btn-catalog">all titles</a>
                 </div>
             </div>
         </section>

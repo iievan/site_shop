@@ -1,0 +1,43 @@
+<!--
+    Частичный шаблон для отображения карточки товара
+    Используется на главной странице и в каталоге для избежания дублирования кода
+
+    Передаваемые переменные:
+    - product: объект товара с полями id, name, description, price, image
+
+    Структура карточки:
+    - Изображение товара
+    - Название и описание
+    - Цена
+    - Кнопка покупки
+-->
+<div class="product-card">
+    <!-- Изображение товара -->
+    <div class="product-image">
+        <%= product.image %>
+    </div>
+
+    <!-- Информация о товаре -->
+    <div class="product-info">
+        <!-- Название товара -->
+        <h3 class="product-title">
+            <%= product.name %>
+        </h3>
+
+        <!-- Описание товара -->
+        <p class="product-description">
+            <%= product.description %>
+        </p>
+
+        <!-- Цена товара -->
+        <div class="product-price">
+            <%= product.price %>
+        </div>
+
+        <!-- Кнопка покупки товара -->
+        <!-- target="_blank" открывает ссылку в новой вкладке -->
+        <a href="/buy/<%= product.id %>" class="btn btn-buy" target="_blank">
+            Text title
+        </a>
+    </div>
+</div>
